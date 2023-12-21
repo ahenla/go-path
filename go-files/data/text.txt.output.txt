@@ -1,0 +1,4 @@
+Original is: I contain some text inside a text file :p 
+
+ Double original is: I contain some text inside a text file :p 
+I contain some text inside a text file :p 
