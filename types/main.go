@@ -1,6 +1,10 @@
 package main
 
-import data "fe.com/go/types/example"
+import (
+	"fmt"
+
+	data "fe.com/go/types/example"
+)
 
 func main() {
 	max := data.Instructor{
@@ -9,7 +13,25 @@ func main() {
 		LastName:  "Firtman",
 	}
 	//new Instructor structure called.
-
 	max.Score = 10
+
+	kyle := data.NewInstructor("Kyle", "Simpson")
+
+	goCourse := data.Course{
+		Id:         2,
+		Name:       "Go fundamentals",
+		Instructor: max,
+	}
+
+	swiftWS := data.NewWorkshop("Swift with iOs", max)
+
+	print(max.Print())
+	print("\n")
+	print(kyle.Print())
+	print("\n")
+
+	fmt.Printf("%v", goCourse)
+	print("\n")
+	fmt.Printf("%v", swiftWS)
 
 }
