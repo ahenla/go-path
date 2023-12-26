@@ -19,3 +19,7 @@ func (c Course) String() string {
 
 // this method uses a special syntax with the name String that returns
 // a string to modify the formatting output of the printed structure.
+
+func (c Course) Signup() bool {
+	return true
+}

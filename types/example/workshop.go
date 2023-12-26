@@ -25,3 +25,7 @@ func NewWorkshop(name string, instructor Instructor) Workshop {
 	w.Instructor = instructor
 	return w
 }
+
+func (w Workshop) Signup() bool {
+	return true
+}

@@ -25,6 +25,10 @@ func main() {
 
 	swiftWS := data.NewWorkshop("Swift with iOs", max)
 
+	var courses [2]data.Signable
+	courses[0] = goCourse
+	courses[1] = swiftWS
+
 	print(max.Print())
 	print("\n")
 	print(kyle.Print())
@@ -33,5 +37,10 @@ func main() {
 	fmt.Printf("%v", goCourse)
 	print("\n")
 	fmt.Printf("%v", swiftWS)
+	print("\n")
+
+	for _, course := range courses {
+		fmt.Println(course)
+	}
 
 }
