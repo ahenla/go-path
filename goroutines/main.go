@@ -15,7 +15,7 @@ func PrintMessage(text string, channel chan string) { // using the channel as an
 
 func main() { // Main go routine or process.
 
-	var Mych chan string // defining a channel with the chan keyword
+	var Mych (chan string) // defining a channel with the chan keyword
 
 	// go PrintMessage("Go is great", Mych)
 	go PrintMessage("This is a go course", Mych)
