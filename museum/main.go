@@ -2,14 +2,33 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"net/http"
 )
 
+func handleHello(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("hello from a Go program"))
+}
+
+func handleTemplate(w http.ResponseWriter, r *http.Request) {
+	html, err := template.ParseFiles("templates/index.tmpl")
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		w.Write([]byte("Internal Server Error"))
+		return
+	}
+	html.Execute(w, "Test")
+}
+
 func main() {
-	http.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("hello from a Go program"))
-	})
-	err := http.ListenAndServe(":3333", nil)
+	server := http.NewServeMux()
+	server.HandleFunc("/hello", handleHello)
+	server.HandleFunc("/template", handleTemplate)
+
+	fileSys := http.FileServer(http.Dir("./public/"))
+	server.Handle("/", fileSys)
+
+	err := http.ListenAndServe(":3333", server)
 	if err == nil {
 		fmt.Println("Error while opening the server")
 	}
