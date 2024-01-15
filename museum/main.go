@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+
+	"fe.com/go/museum/public/data"
 )
 
 func handleHello(w http.ResponseWriter, r *http.Request) {
@@ -17,7 +19,7 @@ func handleTemplate(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Internal Server Error"))
 		return
 	}
-	html.Execute(w, "Test")
+	html.Execute(w, data.GetAll())
 }
 
 func main() {
